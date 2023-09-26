@@ -10,7 +10,7 @@ export default function About({mode}) {
       </div>
       <div className="about-details">
         <p><FaUniversity />Name: <span className="college-name">Lokesh Krishna Cherukuri</span></p>
-        <p><FaGithub /> GitHub: <a href="https://github.com/your-github-username" target="_blank" rel="GitHub Profile"  style={{textDecoration:'none'}}>GitHub Repo (Text-Editor)</a></p>
+        <p><FaGithub /> GitHub: <a href="https://github.com/lokeshkrishna2003/Text-Editor" target="_blank" rel="GitHub Profile"  style={{textDecoration:'none'}}>GitHub Repo (Text-Editor)</a></p>
         <p><FaLinkedin /> LinkedIn: <a href="https://www.linkedin.com/in/lokesh-krishna-cherukuri-906919258/" target="_blank" rel="LinkedIn Profile" style={{textDecoration:'none'}}>LinkedIn Profile</a></p>
         <p><FaEnvelope /> Email: lci2022015@iiitl.ac.in</p>
         <p><FaCode /> <strong>Technologies Used:</strong> React.js, HTML, CSS, Git</p>
