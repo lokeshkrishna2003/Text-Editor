@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
-import Navbar from './components/Navbar'
-import Textform from './components/Textform'
+import React, { useState } from 'react';
+import Navbar from './components/Navbar';
+import Textform from './components/Textform';
 import {
-  BrowserRouter as Router,
   Routes,
-  Route
-} from "react-router-dom"
-import About from './components/About'
-import Alerts from './components/Alerts'
+  Route,
+  useLocation
+} from "react-router-dom";
+import About from './components/About';
+import Alerts from './components/Alerts';
 
 export default function App(props) {
   const [text,settext]=useState("")
@@ -73,28 +73,42 @@ const handlemode=()=>{
     showalerts("success","lightmode enabled")
   }
 }
+  const location = useLocation();
 
   return (
-<>
-<Router>
- 
- <Navbar place1="Home" place2="About" mode={mode} handlemode={handlemode} />
+    <>
+      
+        <Navbar place1="Home" place2="About" mode={mode} handlemode={handlemode} />
 
+        <div className="alert">
+          <Alerts alert={alert} />
+        </div>
 
-<div className="alert">
-<Alerts alert={alert}  />
-</div>
-<div className="container">
-<Routes>
-<Route index element=
- {<Textform title="enter text below" value={text} onchange={handlechange} words={words} charecters={charecters} touppercase={touppercase} tolowercase={tolowercase} clear={clear} textformat={textformat} copy={copy} removewhitespaces={removewhitespaces} />}/>
-</Routes>
-</div>
-<Routes>
-  <Route path='/about' element={<About/>}/>
-</Routes>
-</Router>
-</>
+        <div className="container">
+          <Routes>
+            <Route index path='/' element={<Textform title="Enter Text Below ..." value={text} onchange={handlechange} words={words} charecters={charecters} />} />
+          </Routes>
+        </div>
 
+        <Routes>
+          <Route path='/about' element={<About mode={mode} />} />
+        </Routes>
+
+        {/* Conditional rendering of buttons */}
+        {location.pathname === '/' && (
+          <div className="container" style={{
+            display: 'flex',
+            flexDirection: 'row',
+            gap: '2%'
+          }}>
+            <button type="button" className={`btn btn-secondary ${text.length > 0 ? "" : "disabled"}`} onClick={touppercase}>touppercase</button>
+            <button type="button" className={`btn btn-secondary ${text.length > 0 ? "" : "disabled"}`} onClick={tolowercase}>tolowercase</button>
+            <button type="button" className={`btn btn-secondary ${text.length > 0 ? "" : "disabled"}`} onClick={clear}>clear</button>
+            <button type="button" className={`btn btn-secondary ${text.length > 0 ? "" : "disabled"}`} onClick={textformat}>formattext</button>
+            <button type="button" className={`btn btn-secondary ${text.length > 0 ? "" : "disabled"}`} onClick={removewhitespaces}>remove whitespace</button>
+            <button type="button" className={`btn btn-secondary ${text.length > 0 ? "" : "disabled"}`} onClick={copy}>copy</button>
+          </div>
+        )}
+    </>
   )
 }

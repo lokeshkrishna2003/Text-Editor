@@ -12,12 +12,6 @@ export default function Textform(props) {
 words {props.words} & charecters {props.charecters}
 </div>
 
-<button type="button" className={`btn btn-secondary ${props.value.length>0?"":"disabled"} `}  onClick={props.touppercase}>touppercase</button>
-<button type="button" className={`btn btn-secondary ${props.value.length>0?"":"disabled"} `}  onClick={props.tolowercase}>tolowercase</button>
-<button type="button" className={`btn btn-secondary ${props.value.length>0?"":"disabled"} `}  onClick={props.clear}>clear</button>
-<button type="button" className={`btn btn-secondary ${props.value.length>0?"":"disabled"} `}  onClick={props.textformat}>formattext</button>
-<button type="button" className={`btn btn-secondary ${props.value.length>0?"":"disabled"} `}  onClick={props.removewhitespaces}>remove whitespace</button>
-<button type="button" className={`btn btn-secondary ${props.value.length>0?"":"disabled"} `}  onClick={props.copy}>copy</button>
 
 
 
